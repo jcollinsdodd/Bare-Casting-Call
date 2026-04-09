@@ -294,18 +294,21 @@
     .gallery-grid {
       margin-top: 1.9rem;
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      align-items: start;
     }
 
     .gallery-link {
       display: block;
       width: 100%;
-      max-width: 620px;
+      overflow: hidden;
     }
 
     .gallery-image {
       width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
       transition: transform 240ms ease;
     }
 
@@ -324,11 +327,9 @@
     }
 
     .cast-list li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.3rem 0.55rem;
+      display: grid;
+      justify-items: center;
+      gap: 0.22rem;
       font-size: clamp(1.05rem, 5.8vw, 1.42rem);
       line-height: 1.18;
       text-align: center;
@@ -337,13 +338,11 @@
     .cast-list__name,
     .cast-list__role {
       max-width: 100%;
+      display: block;
     }
 
     .cast-list__leader {
-      flex-basis: 100%;
-      max-width: 220px;
-      height: 0.85em;
-      margin: -0.05rem auto 0.1rem;
+      display: none;
       background-image: radial-gradient(circle, currentColor 1px, transparent 1.15px);
       background-position: center 72%;
       background-repeat: repeat-x;
@@ -444,6 +443,7 @@
 
       .gallery-grid {
         margin-top: 2.5rem;
+        gap: 1.35rem;
       }
 
       .cast-list {
@@ -452,7 +452,9 @@
       }
 
       .cast-list li {
+        display: flex;
         align-items: baseline;
+        justify-content: center;
         flex-wrap: nowrap;
         gap: 0.7rem;
         font-size: clamp(1.18rem, 2.55vw, 1.95rem);
@@ -465,9 +467,11 @@
       }
 
       .cast-list__leader {
+        display: block;
         flex: 1 1 auto;
         min-width: 1.6rem;
         max-width: none;
+        height: 0.85em;
         margin: 0;
       }
 
@@ -540,6 +544,19 @@
           </p>
 
           <div class="gallery-grid">
+            <a
+              class="gallery-link"
+              href="https://www.instagram.com/p/DW5TDz2DAC-/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open second BARE gallery image in a new tab"
+            >
+              <img
+                class="gallery-image"
+                src="https://res.cloudinary.com/dq4ubv7so/image/upload/v1775704546/SnapInsta.to_663122242_17972677704009114_5945328812382872224_n_vyel9e.jpg"
+                alt="Bare Instagram post"
+              >
+            </a>
             <a
               class="gallery-link"
               href="https://www.instagram.com/p/DW45Sh1EWzt/"
