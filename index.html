@@ -14,6 +14,14 @@
     }
 
     @font-face {
+      font-family: "Gotham Book Italic";
+      src: url("https://res.cloudinary.com/dq4ubv7so/raw/upload/v1775790185/Gotham_Book_Italic_yjrkr8.woff") format("woff");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
       font-family: "F1776_Independence W00 Bold";
       src: url("https://db.onlinewebfonts.com/t/8329fe6f020f516acd3d04d7fd252505.eot");
       src: url("https://db.onlinewebfonts.com/t/8329fe6f020f516acd3d04d7fd252505.eot?#iefix") format("embedded-opentype"),
@@ -191,7 +199,7 @@
       background-repeat: no-repeat;
       background-size: 0% 1px;
       transition: background-size 220ms ease, opacity var(--transition), transform var(--transition);
-    }index.html
+    }
 
     .text-link:hover,
     .text-link:focus-visible,
@@ -229,6 +237,10 @@
       margin: 0 auto;
     }
 
+    .home-panel__inner {
+      width: min(100%, 860px);
+    }
+
     .hero-logo {
       width: min(100%, 330px);
       margin: 0 auto;
@@ -255,6 +267,129 @@
       display: grid;
       gap: 1.35rem;
       justify-items: center;
+    }
+
+    .featured-video {
+      width: min(100%, 900px);
+      margin: 2.1rem auto 2.35rem;
+    }
+
+    .featured-video__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .featured-video__video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .featured-video__control,
+    .featured-video__link {
+      position: absolute;
+      bottom: 0.9rem;
+      z-index: 1;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .featured-video__control {
+      left: 0.9rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    .featured-video__control:hover,
+    .featured-video__control:focus-visible,
+    .featured-video__link:hover,
+    .featured-video__link:focus-visible {
+      opacity: 0.58;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .featured-video__control-icon {
+      position: relative;
+      display: block;
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+
+    .featured-video__control-icon::before,
+    .featured-video__control-icon::after {
+      content: "";
+      position: absolute;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .featured-video__control.is-paused .featured-video__control-icon::before {
+      left: 0.18rem;
+      top: 0.08rem;
+      width: 0;
+      height: 0;
+      border-top: 0.37rem solid transparent;
+      border-bottom: 0.37rem solid transparent;
+      border-left: 0.56rem solid currentColor;
+    }
+
+    .featured-video__control.is-paused .featured-video__control-icon::after {
+      opacity: 0;
+    }
+
+    .featured-video__control:not(.is-paused) .featured-video__control-icon::before,
+    .featured-video__control:not(.is-paused) .featured-video__control-icon::after {
+      top: 0.08rem;
+      width: 0.18rem;
+      height: 0.74rem;
+      background: currentColor;
+    }
+
+    .featured-video__control:not(.is-paused) .featured-video__control-icon::before {
+      left: 0.18rem;
+    }
+
+    .featured-video__control:not(.is-paused) .featured-video__control-icon::after {
+      right: 0.18rem;
+    }
+
+    .featured-video__link {
+      right: 0.9rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      pointer-events: none;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.94);
+      text-underline-offset: 0.18em;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: currentColor;
+      background: transparent;
+    }
+
+    .featured-video__link.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .featured-video__link:hover,
+    .featured-video__link:focus-visible {
+      text-decoration-thickness: 1px;
     }
 
     .credit-block {
@@ -292,29 +427,54 @@
     }
 
     .gallery-grid {
-      margin-top: 1.9rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      align-items: start;
+      margin-top: 2.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.9rem;
     }
 
     .gallery-link {
       display: block;
-      width: 100%;
-      overflow: hidden;
+      width: min(100%, 560px);
     }
 
     .gallery-image {
       width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       transition: transform 240ms ease;
     }
 
     .gallery-link:hover .gallery-image,
     .gallery-link:focus-visible .gallery-image {
-      transform: scale(1.02);
+      transform: scale(1.01);
+    }
+
+    .gallery-instagram {
+      margin-top: 3.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .gallery-instagram__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .gallery-instagram__link:hover,
+    .gallery-instagram__link:focus-visible {
+      opacity: 0.58;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .gallery-instagram__logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
     }
 
     .cast-list {
@@ -354,6 +514,52 @@
       font-size: 0.98rem;
       letter-spacing: 0.06em;
       overflow-wrap: anywhere;
+    }
+
+    .apply-panel__inner {
+      width: min(100%, 620px);
+    }
+
+    .apply-copy {
+      margin: 1.9rem auto 0;
+      display: grid;
+      gap: 1.15rem;
+      text-align: center;
+      line-height: 1.65;
+      font-size: 1.06rem;
+    }
+
+    .apply-copy p {
+      margin: 0;
+    }
+
+    .apply-film-title {
+      font-family: "Gotham Book Italic", "Gotham Book", Arial, sans-serif;
+      font-style: italic;
+    }
+
+    .apply-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+      padding: 0.72rem 1.2rem;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      letter-spacing: 0.03em;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .apply-cta:hover,
+    .apply-cta:focus-visible {
+      opacity: 0.58;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .apply-note {
+      margin: 1rem 0 0;
+      font-size: 0.84rem;
+      line-height: 1.5;
     }
 
     @keyframes page-fade {
@@ -419,6 +625,11 @@
         gap: 1.65rem;
       }
 
+      .featured-video {
+        width: min(900px, 78vw);
+        margin: 2.65rem auto 2.9rem;
+      }
+
       .credit-label,
       .credit-name {
         white-space: nowrap;
@@ -442,8 +653,8 @@
       }
 
       .gallery-grid {
-        margin-top: 2.5rem;
-        gap: 1.35rem;
+        margin-top: 2.7rem;
+        gap: 2.15rem;
       }
 
       .cast-list {
@@ -479,6 +690,16 @@
         margin-top: 2rem;
         font-size: 1rem;
       }
+
+      .apply-copy {
+        margin-top: 2.2rem;
+        gap: 1.25rem;
+        font-size: 1.08rem;
+      }
+
+      .apply-cta {
+        margin-top: 2.15rem;
+      }
     }
   </style>
 </head>
@@ -498,7 +719,7 @@
           <button class="nav-link" type="button" data-view-target="gallery">Gallery</button>
           <button class="nav-link" type="button" data-view-target="cast">Cast</button>
           <button class="nav-link" type="button" data-view-target="donate">Donate</button>
-          <a class="nav-link nav-link--apply" href="https://forms.gle/AWAM1kQQJ6PtZtxq9" target="_blank" rel="noopener noreferrer">Apply</a>
+          <button class="nav-link nav-link--apply" type="button" data-view-target="apply">Apply</button>
         </div>
       </nav>
     </div>
@@ -507,7 +728,7 @@
   <main>
     <section class="view is-active" data-view="home" aria-label="BARE Home">
       <div class="panel">
-        <div class="panel__inner">
+        <div class="panel__inner home-panel__inner">
           <img
             class="hero-logo"
             src="https://res.cloudinary.com/dq4ubv7so/image/upload/v1775687430/fd2cf36d-2048-43b4-aaab-cdb9eb3341b0.png"
@@ -515,6 +736,30 @@
           >
           <p class="season film-text">FALL 2026</p>
           <p class="tagline film-text">Before adulthood, there was this.</p>
+
+          <div class="featured-video" id="featured-video" aria-label="Official teaser">
+            <div class="featured-video__frame">
+              <video
+                class="featured-video__video"
+                id="home-teaser-video"
+                muted
+                playsinline
+                preload="metadata"
+              >
+                <source src="https://res.cloudinary.com/dq4ubv7so/video/upload/v1775787956/Official_BARE_Announcement_Teaser._Bare_MartinAnazco_film_1_vz4dcc.mp4" type="video/mp4">
+              </video>
+              <button class="featured-video__control" id="home-teaser-toggle" type="button" aria-label="Pause teaser">
+                <span class="featured-video__control-icon" aria-hidden="true"></span>
+              </button>
+              <a
+                class="featured-video__link"
+                id="home-teaser-youtube-link"
+                href="https://www.youtube.com/watch?v=KPJ20tMVu6I"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Watch on YouTube</a>
+            </div>
+          </div>
 
           <div class="credits film-text" aria-label="Writing credits">
             <div class="credit-block">
@@ -540,7 +785,7 @@
               href="https://www.instagram.com/officialbaremovie/"
               target="_blank"
               rel="noopener noreferrer"
-            >(@officialbaremovie)</a>
+            >@officialbaremovie</a>
           </p>
 
           <div class="gallery-grid">
@@ -568,6 +813,22 @@
                 class="gallery-image"
                 src="https://res.cloudinary.com/dq4ubv7so/image/upload/q_auto/f_auto/v1775694818/31F060B9-D577-482C-84DB-B0CC2D7D4AA2_derdli.jpg"
                 alt="BARE gallery still"
+              >
+            </a>
+          </div>
+
+          <div class="gallery-instagram">
+            <a
+              class="gallery-instagram__link"
+              href="https://www.instagram.com/officialbaremovie/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open official Bare Instagram in a new tab"
+            >
+              <img
+                class="gallery-instagram__logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/250px-Instagram_logo_2022.svg.png"
+                alt="Instagram"
               >
             </a>
           </div>
@@ -619,13 +880,129 @@
         </div>
       </div>
     </section>
+
+    <section class="view" data-view="apply" aria-label="Apply" hidden>
+      <div class="panel">
+        <div class="panel__inner apply-panel__inner">
+          <h2 class="section-title film-text">Apply</h2>
+
+          <div class="apply-copy">
+            <p>Interested in being part of <span class="apply-film-title">Bare</span>? We are currently accepting applications for casting consideration. If you would like to be considered, please complete the application form as soon as possible. Early submissions are strongly encouraged, and applicants should submit promptly for timely review.</p>
+            <p>The application includes basic contact and availability questions, the role you are auditioning for, questions about experience, and a short written response about your interest in the project. Applicants will also be asked to upload a clear, recent photo of themselves. In addition, there is an optional 30-second acting video upload. While the video is not required, it is highly recommended and may strengthen your application.</p>
+            <p>Please review all information carefully before submitting. Applications containing inaccurate information or skipped responses may not be prioritized.</p>
+          </div>
+
+          <a
+            class="apply-cta"
+            href="https://forms.gle/5LtLHieZGTKMWwqa9"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open Application</a>
+          <p class="apply-note">Applications should be submitted as soon as possible.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
     (function () {
+      var HOME_TEASER_CUTOFF_SECONDS = 62;
       var sectionButtons = document.querySelectorAll("[data-view-target]");
       var sections = document.querySelectorAll("[data-view]");
       var navButtons = document.querySelectorAll(".nav-link[data-view-target]");
+      var homeTeaserVideo = document.getElementById("home-teaser-video");
+      var homeTeaserToggle = document.getElementById("home-teaser-toggle");
+      var homeTeaserYoutubeLink = document.getElementById("home-teaser-youtube-link");
+      var hasUserEnabledTeaserAudio = false;
+
+      function resetTeaserIfAtCutoff() {
+        if (!homeTeaserVideo) {
+          return;
+        }
+
+        if (homeTeaserVideo.currentTime >= HOME_TEASER_CUTOFF_SECONDS) {
+          homeTeaserVideo.currentTime = 0;
+          homeTeaserYoutubeLink.classList.remove("is-visible");
+        }
+      }
+
+      function enableTeaserAudio() {
+        if (!homeTeaserVideo) {
+          return;
+        }
+
+        homeTeaserVideo.muted = false;
+        homeTeaserVideo.defaultMuted = false;
+        homeTeaserVideo.removeAttribute("muted");
+        homeTeaserVideo.volume = 1;
+      }
+
+      function playTeaser() {
+        if (!homeTeaserVideo) {
+          return;
+        }
+
+        resetTeaserIfAtCutoff();
+        var playAttempt = homeTeaserVideo.play();
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(function () {
+            updateTeaserButton();
+          });
+        }
+      }
+
+      function handleTeaserUserToggle() {
+        if (!homeTeaserVideo) {
+          return;
+        }
+
+        if (!hasUserEnabledTeaserAudio) {
+          hasUserEnabledTeaserAudio = true;
+          enableTeaserAudio();
+          if (homeTeaserVideo.paused) {
+            playTeaser();
+          } else {
+            updateTeaserButton();
+          }
+          return;
+        }
+
+        if (homeTeaserVideo.paused) {
+          playTeaser();
+        } else {
+          homeTeaserVideo.pause();
+        }
+      }
+
+      function updateTeaserButton() {
+        if (!homeTeaserVideo || !homeTeaserToggle) {
+          return;
+        }
+
+        var isPaused = homeTeaserVideo.paused;
+        homeTeaserToggle.classList.toggle("is-paused", isPaused);
+        homeTeaserToggle.setAttribute("aria-label", !hasUserEnabledTeaserAudio ? "Turn on teaser sound" : (isPaused ? "Play teaser" : "Pause teaser"));
+      }
+
+      function updateTeaserYoutubeLink() {
+        if (!homeTeaserVideo || !homeTeaserYoutubeLink || !homeTeaserVideo.duration) {
+          return;
+        }
+
+        var revealPoint = Math.max(homeTeaserVideo.duration - 30, 0);
+        homeTeaserYoutubeLink.classList.toggle("is-visible", homeTeaserVideo.currentTime >= revealPoint);
+      }
+
+      function enforceTeaserCutoff() {
+        if (!homeTeaserVideo) {
+          return;
+        }
+
+        if (homeTeaserVideo.currentTime >= HOME_TEASER_CUTOFF_SECONDS) {
+          homeTeaserVideo.currentTime = HOME_TEASER_CUTOFF_SECONDS;
+          homeTeaserVideo.pause();
+        }
+      }
 
       function showView(viewName) {
         sections.forEach(function (section) {
@@ -639,6 +1016,10 @@
           button.classList.toggle("is-active", isActive);
           button.setAttribute("aria-current", isActive ? "page" : "false");
         });
+
+        if (homeTeaserVideo && viewName !== "home" && !homeTeaserVideo.paused) {
+          homeTeaserVideo.pause();
+        }
       }
 
       sectionButtons.forEach(function (control) {
@@ -649,6 +1030,41 @@
           }
         });
       });
+
+      if (homeTeaserVideo && homeTeaserToggle && homeTeaserYoutubeLink) {
+        homeTeaserYoutubeLink.classList.remove("is-visible");
+
+        homeTeaserToggle.addEventListener("click", handleTeaserUserToggle);
+        homeTeaserVideo.addEventListener("click", handleTeaserUserToggle);
+
+        homeTeaserVideo.addEventListener("play", updateTeaserButton);
+        homeTeaserVideo.addEventListener("pause", updateTeaserButton);
+        homeTeaserVideo.addEventListener("ended", updateTeaserButton);
+        function initializeTeaserState() {
+          homeTeaserYoutubeLink.classList.remove("is-visible");
+          homeTeaserVideo.volume = 1;
+          homeTeaserVideo.muted = true;
+          homeTeaserVideo.defaultMuted = true;
+          homeTeaserVideo.setAttribute("muted", "");
+          updateTeaserYoutubeLink();
+        }
+
+        if (homeTeaserVideo.readyState >= 1) {
+          initializeTeaserState();
+        } else {
+          homeTeaserVideo.addEventListener("loadedmetadata", initializeTeaserState, { once: true });
+        }
+        homeTeaserVideo.addEventListener("timeupdate", function () {
+          enforceTeaserCutoff();
+          updateTeaserYoutubeLink();
+        });
+        homeTeaserVideo.addEventListener("seeked", function () {
+          enforceTeaserCutoff();
+          updateTeaserYoutubeLink();
+        });
+
+        updateTeaserButton();
+      }
     }());
   </script>
 </body>
